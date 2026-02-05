@@ -4,6 +4,8 @@ import { alteraTermo } from '../../store/reducers/filtro'
 import FiltroCard from '../../Components/FiltroCard'
 import { Aside, Campo, Filtros } from './styles'
 
+import * as enums from '../../Utils/enums/tafera'
+
 const BarraLateral = () => {
   const dispatch = useDispatch()
   const { termo } = useSelector((state: RootReducer) => state.filtro)
@@ -18,12 +20,32 @@ const BarraLateral = () => {
           onChange={(evento) => dispatch(alteraTermo(evento.target.value))}
         />
         <Filtros>
-          <FiltroCard contador={3} legenda="Pendente" />
-          <FiltroCard contador={4} legenda="Concluidas" />
-          <FiltroCard contador={2} legenda="Urgentes" />
-          <FiltroCard contador={2} legenda="Importantes" />
-          <FiltroCard contador={3} legenda="Normal" />
-          <FiltroCard ativo contador={4} legenda="Todas" />
+          <FiltroCard
+            valor={enums.Status.PENDENTE}
+            legenda="Pendente"
+            criterio="status"
+          />
+          <FiltroCard
+            valor={enums.Status.CONCLUIDA}
+            criterio="status"
+            legenda="Concluidas"
+          />
+          <FiltroCard
+            valor={enums.Prioridade.URGENTE}
+            criterio="status"
+            legenda="Urgentes"
+          />
+          <FiltroCard
+            valor={enums.Prioridade.IMPORTANTE}
+            criterio="prioridade"
+            legenda="Importantes"
+          />
+          <FiltroCard
+            valor={enums.Prioridade.NORMAL}
+            criterio="todas"
+            legenda="Normal"
+          />
+          <FiltroCard criterio="prioridade" legenda="Todas" />
         </Filtros>
       </div>
     </Aside>
