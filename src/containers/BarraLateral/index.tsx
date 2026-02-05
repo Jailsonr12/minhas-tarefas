@@ -32,7 +32,7 @@ const BarraLateral = () => {
           />
           <FiltroCard
             valor={enums.Prioridade.URGENTE}
-            criterio="status"
+            criterio="prioridade"
             legenda="Urgentes"
           />
           <FiltroCard
@@ -42,10 +42,10 @@ const BarraLateral = () => {
           />
           <FiltroCard
             valor={enums.Prioridade.NORMAL}
-            criterio="todas"
+            criterio="prioridade"
             legenda="Normal"
           />
-          <FiltroCard criterio="prioridade" legenda="Todas" />
+          <FiltroCard criterio="todas" legenda="Todas" />
         </Filtros>
       </div>
     </Aside>

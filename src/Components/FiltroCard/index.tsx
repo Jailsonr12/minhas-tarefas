@@ -25,11 +25,12 @@ const FiltroCard = ({ legenda, criterio, valor }: Props) => {
   const contarTarefas = () => {
     if (criterio === 'todas') return tarefas.itens.length
     if (criterio === 'prioridade') {
-      tarefas.itens.filter((item) => item.prioridade === valor).length
+      return tarefas.itens.filter((item) => item.prioridade === valor).length
     }
     if (criterio === 'status') {
-      tarefas.itens.filter((item) => item.status === valor).length
+      return tarefas.itens.filter((item) => item.status === valor).length
     }
+    return 0
   }
 
   const filtrar = () => [
