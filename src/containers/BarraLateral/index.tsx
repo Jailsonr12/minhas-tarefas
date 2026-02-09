@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { alteraTermo } from '../../store/reducers/filtro'
 import FiltroCard from '../../Components/FiltroCard'
-import { Aside, Campo, Filtros } from './styles'
+import { Aside, Filtros } from './styles'
+import { Campo } from '../../styles'
 
 import * as enums from '../../Utils/enums/tafera'
 
@@ -32,7 +33,7 @@ const BarraLateral = () => {
           />
           <FiltroCard
             valor={enums.Prioridade.URGENTE}
-            criterio="status"
+            criterio="prioridade"
             legenda="Urgentes"
           />
           <FiltroCard
@@ -42,10 +43,10 @@ const BarraLateral = () => {
           />
           <FiltroCard
             valor={enums.Prioridade.NORMAL}
-            criterio="todas"
+            criterio="prioridade"
             legenda="Normal"
           />
-          <FiltroCard criterio="prioridade" legenda="Todas" />
+          <FiltroCard criterio="todas" legenda="Todas" />
         </Filtros>
       </div>
     </Aside>
