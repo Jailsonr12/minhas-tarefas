@@ -33,6 +33,7 @@ const Terafa = ({
   }, [descricaoOriginal])
 
   function cancelarEdição() {
+    // eslint-disable-next-line no-sequences
     setEstadoEditando(false), setDecricao(descricaoOriginal)
   }
 
