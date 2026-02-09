@@ -8,10 +8,10 @@ import {
   Descricao,
   BarraAcoes,
   Botao,
-  BotaoCancelarRemover,
-  BotaoSalvar
+  BotaoCancelarRemover
 } from './styles'
 import TarefaClass from '../../models/Tarefas'
+import { BotaoSalvar } from '../../styles'
 
 type Props = TarefaClass
 

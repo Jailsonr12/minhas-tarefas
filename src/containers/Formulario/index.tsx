@@ -1,4 +1,4 @@
-import { MainContainer, Titulo } from '../../styles/index'
+import { BotaoSalvar, MainContainer, Titulo } from '../../styles/index'
 import { Campo } from '../../styles'
 import { Form, Opcoes } from './style'
 const Formulario = () => (
@@ -16,7 +16,7 @@ const Formulario = () => (
         <input name="prioridade" type="radio" id="normal" />{' '}
         <label htmlFor="normal">Normal</label>
       </Opcoes>
-      <button type="submit">Cadastrar</button>
+      <BotaoSalvar type="submit">Cadastrar</BotaoSalvar>
     </Form>
   </MainContainer>
 )
