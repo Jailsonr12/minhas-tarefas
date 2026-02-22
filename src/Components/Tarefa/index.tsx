@@ -38,7 +38,6 @@ const Tarefa = ({
   }
 
   function alteraStatusTarefa(evento: ChangeEvent<HTMLInputElement>) {
-    // @ts-ignore
     dispatch(alteraStatus({ id, finalizado: evento.target.checked }))
   }
 
