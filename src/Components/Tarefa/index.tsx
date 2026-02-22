@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { remover, editar } from '../../store/reducers/tarefas'
+import { remover, editar, alteraStatus } from '../../store/reducers/tarefas'
 import {
   Card,
   Titulo,
@@ -15,14 +15,14 @@ import { BotaoSalvar } from '../../styles'
 
 type Props = TarefaClass
 
-const Terafa = ({
+const Tarefa = ({
   titulo,
   prioridade,
   status,
   descricao: descricaoOriginal,
   id
 }: Props) => {
-  const dispath = useDispatch()
+  const dispatch = useDispatch()
   const [estadEditandomo, setEstadoEditando] = useState(false)
   const [descricao, setDecricao] = useState('')
 
@@ -33,13 +33,22 @@ const Terafa = ({
   }, [descricaoOriginal])
 
   function cancelarEdição() {
-    // eslint-disable-next-line no-sequences
-    setEstadoEditando(false), setDecricao(descricaoOriginal)
+    setEstadoEditando(false)
+    setDecricao(descricaoOriginal)
+  }
+
+  function alteraStatusTarefa(evento: ChangeEvent<HTMLInputElement>) {
+    // @ts-ignore
+    dispatch(alteraStatus({ id, finalizado: evento.target.checked }))
   }
 
   return (
     <Card>
-      <Titulo>{titulo}</Titulo>
+      <label>
+        <input type="checkbox" onChange={alteraStatusTarefa} />
+
+        <Titulo>{titulo}</Titulo>
+      </label>
       <Tag parametros="prioridade" prioridade={prioridade}>
         {prioridade}
       </Tag>
@@ -57,7 +66,7 @@ const Terafa = ({
           <>
             <BotaoSalvar
               onClick={() => {
-                dispath(
+                dispatch(
                   editar({
                     descricao,
                     prioridade,
@@ -71,14 +80,14 @@ const Terafa = ({
             >
               Salvar
             </BotaoSalvar>
-            <BotaoCancelarRemover onClick={() => cancelarEdição}>
+            <BotaoCancelarRemover onClick={() => cancelarEdição()}>
               Cancelar
             </BotaoCancelarRemover>
           </>
         ) : (
           <>
             <Botao onClick={() => setEstadoEditando(true)}>Editar</Botao>
-            <BotaoCancelarRemover onClick={() => dispath(remover(id))}>
+            <BotaoCancelarRemover onClick={() => dispatch(remover(id))}>
               Remover
             </BotaoCancelarRemover>
           </>
@@ -87,4 +96,4 @@ const Terafa = ({
     </Card>
   )
 }
-export default Terafa
+export default Tarefa
