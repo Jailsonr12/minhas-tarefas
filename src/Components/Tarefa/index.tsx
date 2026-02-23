@@ -7,11 +7,13 @@ import {
   Tag,
   Descricao,
   BarraAcoes,
-  Botao,
   BotaoCancelarRemover
 } from './styles'
 import TarefaClass from '../../models/Tarefas'
 import { BotaoSalvar } from '../../styles'
+import { Botao } from '../../styles'
+
+import * as enums from '../../Utils/enums/tafera'
 
 type Props = TarefaClass
 
@@ -44,9 +46,14 @@ const Tarefa = ({
   return (
     <Card>
       <label>
-        <input type="checkbox" onChange={alteraStatusTarefa} />
-
+        <input
+          id={titulo}
+          checked={status === enums.Status.CONCLUIDA}
+          type="checkbox"
+          onChange={alteraStatusTarefa}
+        />
         <Titulo>{titulo}</Titulo>
+        {estadEditandomo && <em>Editando: </em>}
       </label>
       <Tag parametros="prioridade" prioridade={prioridade}>
         {prioridade}
