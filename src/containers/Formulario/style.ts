@@ -7,6 +7,10 @@ export const Form = styled.form`
   font-size: 14px;
   color: #666666;
 
+  input {
+    margin-bottom: 16px;
+  }
+
   textarea {
     resize: none;
     margin: 16px 0;
